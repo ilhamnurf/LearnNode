@@ -17,3 +17,8 @@ router.delete("/users/:id", destroy);
 router.put ("/users/update/:id",update)
 
 module.exports = router;
+//buatlah crud dengan table berikut
+
+//id integer
+//name produk
+//jumalh

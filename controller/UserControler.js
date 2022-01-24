@@ -35,7 +35,7 @@ const detail = async (req, res) => {
     return res.status(200).json({
       status: "Succses",
       msg: "Daftar User Di Temukan ",
-      data:users
+      data: users,
     });
   } catch (err) {
     console.log(err);
@@ -46,16 +46,15 @@ const detail = async (req, res) => {
   }
 };
 
-const detailByEmail = async(req,res) => {
-  
+const detailByEmail = async (req, res) => {
   try {
     const email = req.params.email;
     const users = await UserModel.findOne({
-      where:{
+      where: {
         email: email,
-      }
-    })
-    
+      },
+    });
+
     if (users === null) {
       return res.json({
         status: "Fail",
@@ -67,23 +66,23 @@ const detailByEmail = async(req,res) => {
       msg: "Daftar User Di Temukan ",
       data: users,
     });
-    res.send(email)    
+    res.send(email);
   } catch (err) {
     return res.status(403).json({
       status: "fail",
       msg: "ada kesalahan",
     });
   }
-}
-const destroy= async (req,res) =>{
+};
+const destroy = async (req, res) => {
   try {
-    const {id} = req.params;
+    const { id } = req.params;
     const users = await UserModel.destroy({
-      where:{
+      where: {
         id: id,
-      }
-    })
-    
+      },
+    });
+
     if (users === 0) {
       return res.json({
         status: "Fail",
@@ -95,19 +94,19 @@ const destroy= async (req,res) =>{
       msg: "User Di hapus ",
       data: users,
     });
-    res.send(email)    
+    res.send(email);
   } catch (err) {
     return res.status(403).json({
       status: "fail",
       msg: "ada kesalahan",
     });
   }
-}
+};
 
-const update = async (req,res) =>{
+const update = async (req, res) => {
   try {
-    const {id} = req.params;
-    const {name} = req.body;
+    const { id } = req.params;
+    const { name } = req.body;
     const user = await UserModel.findByPk(id);
     if (users === 0) {
       return res.json({
@@ -115,24 +114,23 @@ const update = async (req,res) =>{
         msg: "User Tidak Ditemukan",
       });
     }
-    
-    await UserModel.update({
-      name:name,
-    },
-    {
-      where:{
-        id:id,
+
+    await UserModel.update(
+      {
+        name: name,
+      },
+      {
+        where: {
+          id: id,
+        },
       }
-    }
-    )
+    );
   } catch (err) {
     return res.status(403).json({
       status: "fail",
       msg: "ada kesalahan",
     });
   }
+};
 
-  
-}
-
-module.exports = { index, detail ,detailByEmail ,destroy ,update };
+module.exports = { index, detail, detailByEmail, destroy, update };
