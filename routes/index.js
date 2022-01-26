@@ -14,7 +14,7 @@ router.get("/users", index);
 router.get("/users/:id", detail);
 router.get("/users/email/:email", detailByEmail);
 router.delete("/users/:id", destroy);
-router.put ("/users/update/:id",update)
+router.put ("/users/update/:id",update);
 
 module.exports = router;
 //buatlah crud dengan table berikut

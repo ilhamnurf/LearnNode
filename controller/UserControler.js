@@ -125,6 +125,10 @@ const update = async (req, res) => {
         },
       }
     );
+    return res.status(403).json({
+      status: "fail",
+      msg: "ada kesalahan",
+    });
   } catch (err) {
     return res.status(403).json({
       status: "fail",
